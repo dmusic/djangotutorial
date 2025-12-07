@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Polls</title>
+</head>
+<body>
+    {% if latest_question_list %}
+        <ul>
+            {% for question in latest_question_list %}
+                <li>
+                    <!-- using url function to select proper path in polls.url.py and providing parameters to it -->
+                    <!-- introducing namespace with app_name in urls.py -->
+                    <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+</body>
+</html>
